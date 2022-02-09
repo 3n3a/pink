@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" >
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8">
   <title>pink</title>
   <link rel="preload" href="https://cdn.app.sbb.ch/fonts/v1_6_subset/SBBWeb-Roman.woff2" as="font" type="font/woff2" crossorigin="">
@@ -77,13 +78,18 @@
     document.body.childNodes.forEach((n) => {
         n.hidden = true
     })
+    document.body.style.width = "100vw";
+    document.body.style.height = "100vh";
     html2canvas(document.body, {
-      windowWidth: window.outerWidth,
-      windowHeight: window.outerHeight
+      backgroundColor: "#ff59d8",
+      windowWidth: window.innerWidth,
+      windowHeight: window.innerHeight
     }).then((canvas) => {
       document.body.childNodes.forEach((n) => {
           n.hidden = false
       })
+      document.body.style.width = "";
+      document.body.style.height = "";
       ReImg.fromCanvas(canvas).downloadPng("pink.png");
     });
   })
